@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="DClass2">
+  <ClassDiagramComponents>
+    <Class name="Pirate" package="" visibility="public" xPosition="625.0" yPosition="52.0">
+      <Fields>
+        <Field name="position" type="Dimension" visibility="private"/>
+        <Field name="bonus" type="Treasure" visibility="private"/>
+        <Field name="image" type="String" visibility="private"/>
+        <Field name="path" type="Dimension[]" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="Pirate" returnType="void" visibility="public">
+          <Argument type="Dimension" name="position"/>
+          <Argument type="Treasure" name="bonus"/>
+          <Argument type="String" name="image"/>
+        </Method>
+        <Method name="generate" returnType="void" visibility="public">
+          <Argument type="int" name="width"/>
+          <Argument type="int" name="height"/>
+        </Method>
+        <Method name="move" returnType="void" visibility="public"/>
+        <Method name="getPath" returnType="Dimension[]" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Maze" package="" visibility="public" xPosition="203.0" yPosition="19.0">
+      <Fields>
+        <Field name="width" type="int" visibility="private"/>
+        <Field name="height" type="int" visibility="private"/>
+        <Field name="mazeIndex" type="int" visibility="private"/>
+        <Field name="x" type="Object" visibility="private"/>
+        <Field name="mapsArrayList" type="ArrayList&lt;short[][]&gt;" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="Maze" returnType="void" visibility="public">
+          <Argument type="Integer" name="mazeIndex"/>
+          <Argument type="int" name="width"/>
+          <Argument type="int" name="height"/>
+        </Method>
+        <Method name="setValue" returnType="void" visibility="public">
+          <Argument type="int" name="x"/>
+          <Argument type="int" name="y"/>
+          <Argument type="short" name="value"/>
+        </Method>
+        <Method name="getValue" returnType="short" visibility="public">
+          <Argument type="Dimension" name="P"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Treasure" package="" visibility="public" xPosition="1093.0" yPosition="254.0">
+      <Fields>
+        <Field name="position" type="Dimension" visibility="private"/>
+        <Field name="image" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="Treasure" returnType="void" visibility="public">
+          <Argument type="Treasure" name="B"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Player" package="" visibility="public" xPosition="660.0" yPosition="384.0">
+      <Fields>
+        <Field name="position" type="Dimension" visibility="private"/>
+        <Field name="image" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="Player" returnType="void" visibility="public">
+          <Argument type="Dimension" name="position"/>
+          <Argument type="String" name="image"/>
+        </Method>
+        <Method name="move" returnType="void" visibility="public"/>
+        <Method name="eat" returnType="boolean" visibility="public">
+          <Argument type="Treasure" name="bonus"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="EngineGame" package="" visibility="public" xPosition="132.0" yPosition="290.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="EngineGame" returnType="void" visibility="public"/>
+        <Method name="getRandomBonus" returnType="Treasure" visibility="public"/>
+        <Method name="play" returnType="void" visibility="public"/>
+        <Method name="detectMove" returnType="void" visibility="public"/>
+        <Method name="run" returnType="void" visibility="public"/>
+        <Method name="paintComponent" returnType="void" visibility="public">
+          <Argument type="java.awt.Graphics" name="g"/>
+        </Method>
+        <Method name="Move" returnType="int" visibility="public">
+          <Argument type="Dimension" name="location"/>
+          <Argument type="String" name="MOVE"/>
+        </Method>
+        <Method name="collision" returnType="void" visibility="public"/>
+        <Method name="eat" returnType="void" visibility="public"/>
+        <Method name="getResizeImage" returnType="Image" visibility="public">
+          <Argument type="Image" name="img"/>
+          <Argument type="int" name="w"/>
+          <Argument type="int" name="h"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation name="Use" source="EngineGame" target="Player" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="Use" source="EngineGame" target="Treasure" sourceCardinality="1..*" targetCardinality="1..1"/>
+    <HasRelation name="has" source="Pirate" target="Treasure" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <UseRelation name="Use" source="EngineGame" target="Pirate" sourceCardinality="1..*" targetCardinality="1..1"/>
+    <UseRelation name="Use" source="EngineGame" target="Maze" sourceCardinality="1..*" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

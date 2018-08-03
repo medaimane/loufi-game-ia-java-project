@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="DClass">
+  <ClassDiagramComponents>
+    <Class name="AbstractSearchEngine" package="" visibility="public" xPosition="536.0" yPosition="11.0">
+      <Fields>
+        <Field name="maze" type="Maze" visibility="private"/>
+        <Field name="searchPath" type="Dimension[]" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="initSearch" returnType="void" visibility="public"/>
+        <Method name="getPath" returnType="Dimension[]" visibility="public"/>
+        <Method name="getPossibleMoves" returnType="Dimension[]" visibility="public"/>
+        <Method name="AbstractSearchEngine" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="AStarSearchEngine" package="" visibility="public" xPosition="227.0" yPosition="11.0">
+      <Fields>
+        <Field name="openList" type="ArrayList&lt;Node&gt;" visibility="private"/>
+        <Field name="closedList" type="ArrayList&lt;Node&gt;" visibility="private"/>
+        <Field name="goal" type="Node" visibility="private"/>
+        <Field name="start" type="Node" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="AStarSearchEngine" returnType="void" visibility="public"/>
+        <Method name="getSearchPath" returnType="Dimension[]" visibility="public"/>
+        <Method name="lowestFInList" returnType="Node" visibility="public"/>
+        <Method name="calcPath" returnType="ArrayList&lt;Node&gt;" visibility="public"/>
+        <Method name="doAStar" returnType="ArrayList&lt;Node&gt;" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="DepthFirstSearchEngine" package="" visibility="public" xPosition="841.0" yPosition="62.0">
+      <Fields>
+        <Field name="L" type="ArrayList&lt;Dimension&gt;" visibility="private"/>
+        <Field name="T" type="ArrayList&lt;Dimension&gt;" visibility="private"/>
+        <Field name="predecessor" type="Dimension[][]" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="DepthFirstSearchEngine" returnType="void" visibility="public"/>
+        <Method name="getSearchPath" returnType="Dimension[]" visibility="public">
+          <Argument type="Pirate" name="bot"/>
+          <Argument type="Treasure" name="bonus"/>
+        </Method>
+        <Method name="doDFS" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="BreadthFirstSearchEngine" package="" visibility="public" xPosition="489.0" yPosition="338.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="BreadthFirstSearchEngine" returnType="void" visibility="public">
+          <Argument type="Maze" name="map"/>
+        </Method>
+        <Method name="getSearchPath" returnType="Dimension[]" visibility="public">
+          <Argument type="Pirate" name="bot"/>
+          <Argument type="Treasure" name="bonus"/>
+        </Method>
+        <Method name="doSearch" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Node" package="" visibility="public" xPosition="200.0" yPosition="292.0">
+      <Fields>
+        <Field name="MOVEMENT_COST" type="int" visibility="private"/>
+        <Field name="xNodePosition" type="int" visibility="private"/>
+        <Field name="yNodePosition" type="int" visibility="private"/>
+        <Field name="parent" type="Node" visibility="private"/>
+        <Field name="g" type="int" visibility="private"/>
+        <Field name="h" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="Node" returnType="void" visibility="public">
+          <Argument type="int" name="x"/>
+          <Argument type="int" name="y"/>
+        </Method>
+        <Method name="setG" returnType="void" visibility="public">
+          <Argument type="Node" name="parent"/>
+        </Method>
+        <Method name="calculateG" returnType="int" visibility="public">
+          <Argument type="Node" name="parent"/>
+        </Method>
+        <Method name="getG" returnType="Node" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="DimensionQueue" package="" visibility="public" xPosition="961.0" yPosition="292.0">
+      <Fields>
+        <Field name="queue" type="Dimension[]" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="DimensionQueue" returnType="void" visibility="public"/>
+        <Method name="addToBackOfQueue" returnType="void" visibility="public"/>
+        <Method name="removeFromFrontOfQueue" returnType="Dimension" visibility="public"/>
+        <Method name="isEmpty" returnType="Boolean" visibility="public"/>
+        <Method name="peekAtFrontOfQueue" returnType="Dimension" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <IsRelation name="is" source="AStarSearchEngine" target="AbstractSearchEngine"/>
+    <HasRelation name="Contient" source="BreadthFirstSearchEngine" target="DimensionQueue" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="BreadthFirstSearchEngine" target="AbstractSearchEngine"/>
+    <IsRelation name="is" source="DepthFirstSearchEngine" target="AbstractSearchEngine"/>
+    <UseRelation name="Use" source="AStarSearchEngine" target="Node" sourceCardinality="1..*" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
